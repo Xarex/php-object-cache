@@ -11,24 +11,24 @@
  * 
  */
 class JSON {
-	
-	/**
-	 * @var static Services_JSON Singleton
-	 */
-	static $JSON_lib;
-	
+
 	/**
 	 * Returns the JSON Singleton
 	 * @return Object Services_JSON Instance
 	 */
 	function &_getJSONSingleton() {
-		if (!isset(self::$JSON_lib)) {
+		/**
+		 * @var static Services_JSON Singleton
+		 */
+		static $JSON_lib;
+	
+		if (!isset($JSON_lib)) {
 			if (!class_exists('Services_JSON')) {
 				require_once('libs/json.pear.php');
 			}
-			self::$JSON_lib = new Services_JSON();
+			$JSON_lib = new Services_JSON();
 		}
-		return self::$JSON_lib;
+		return $JSON_lib;
 	}
 	
 }
